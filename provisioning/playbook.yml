@@ -1,0 +1,6 @@
+---
+- hosts: all
+  vars:
+    timezone: America/Chicago
+  roles:
+    - { role: inputrc }
