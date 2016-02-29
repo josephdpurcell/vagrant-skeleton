@@ -8,6 +8,8 @@ end
 # tunables
 ip          = '10.33.100.10'
 project     = 'vm-project-name'
+memory      = "1024"
+cpus        = "1"
 # end tunables
 
 Vagrant.configure(2) do |config|
@@ -20,11 +22,13 @@ Vagrant.configure(2) do |config|
         box.vm.box_version = "20160222.0.0"
 
         box.vm.provider "vmware_fusion" do |v|
-            v.vmx["memsize"] = "1024"
+            v.vmx["memsize"] = memory
+            v.vmx["numvcpus"] = cpus
         end
 
         box.vm.provider "virtualbox" do |vb|
-            vb.customize ["modifyvm", :id, "--memory", "1024"]
+            vb.memory = memory
+            vb.cpus = cpus
         end
 
         box.vm.hostname = "#{project}.local"
