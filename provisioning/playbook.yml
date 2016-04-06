@@ -2,5 +2,7 @@
 - hosts: all
   vars:
     timezone: America/Chicago
+    aptitude_packages: []
   roles:
     - { role: inputrc }
+    - { role: aptitude }
